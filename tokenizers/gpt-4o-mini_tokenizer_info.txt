@@ -1,0 +1,22 @@
+Tokenizer Information for gpt-4o-mini
+==================================================
+
+Encoding: cl100k_base
+Max token value: 100276
+Special tokens: {'<|endoftext|>', '<|fim_suffix|>', '<|fim_middle|>', '<|fim_prefix|>', '<|endofprompt|>'}
+
+Sample tokenization:
+Sample text: 'Hello, world! How are you today?'
+Token count: 9
+Tokens: [9906, 11, 1917, 0, 2650, 527, 499, 3432, 30]
+
+Token breakdown:
+   1:  9906 -> 'Hello'
+   2:    11 -> ','
+   3:  1917 -> ' world'
+   4:     0 -> '!'
+   5:  2650 -> ' How'
+   6:   527 -> ' are'
+   7:   499 -> ' you'
+   8:  3432 -> ' today'
+   9:    30 -> '?'

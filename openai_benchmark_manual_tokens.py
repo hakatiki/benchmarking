@@ -5,13 +5,66 @@ from typing import List, Dict
 import json
 import argparse
 from datetime import datetime
-import tiktoken
-
+import pickle
+from pathlib import Path
 
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
+
+class OfflineTokenizerLoader:
+    """Utility class to load offline tokenizers."""
+    
+    @staticmethod
+    def load_tokenizer(model: str):
+        """Load offline tokenizer for the specified model."""
+        # Map model names to tokenizer folders
+        model_mapping = {
+            "gpt-4o": "gpt-4o",
+            "gpt-4o-mini": "gpt-4o-mini",
+            "gpt-4.1": "gpt-4o",  # Fallback to gpt-4o tokenizer
+        }
+        
+        tokenizer_folder = model_mapping.get(model, "gpt-4o")  # Default fallback
+        tokenizer_path = Path("tokenizers") / tokenizer_folder / "tokenizer.pkl"
+        
+        try:
+            print(f"🔍 Loading offline tokenizer for {model} from {tokenizer_path}")
+            with open(tokenizer_path, 'rb') as f:
+                tokenizer = pickle.load(f)
+            print(f"✅ Successfully loaded offline tokenizer for {model}")
+            return tokenizer
+        except FileNotFoundError:
+            print(f"❌ Offline tokenizer not found at {tokenizer_path}")
+            print(f"   Please run 'python save_tokenizers_offline.py' first to create offline tokenizers")
+            print(f"   Falling back to online tiktoken...")
+            
+            # Fallback to online tiktoken
+            try:
+                import tiktoken
+                tokenizer = tiktoken.encoding_for_model(model)
+                print(f"✅ Loaded online tokenizer for {model}")
+                return tokenizer
+            except KeyError:
+                print(f"⚠️  Online tokenizer not found for {model}, using cl100k_base fallback")
+                import tiktoken
+                return tiktoken.get_encoding("cl100k_base")
+        except Exception as e:
+            print(f"❌ Error loading offline tokenizer: {e}")
+            print(f"   Falling back to online tiktoken...")
+            
+            # Fallback to online tiktoken
+            try:
+                import tiktoken
+                tokenizer = tiktoken.encoding_for_model(model)
+                print(f"✅ Loaded online tokenizer for {model}")
+                return tokenizer
+            except KeyError:
+                print(f"⚠️  Online tokenizer not found for {model}, using cl100k_base fallback")
+                import tiktoken
+                return tiktoken.get_encoding("cl100k_base")
 
 
 class OpenAIBenchmark:
@@ -24,13 +77,9 @@ class OpenAIBenchmark:
         self.default_model = model
         self.start_time = datetime.now()
         
-        # Initialize tokenizer for manual token counting
-        try:
-            self.tokenizer = tiktoken.encoding_for_model(model)
-        except KeyError:
-            # Fallback to cl100k_base for newer models
-            print(f"⚠️  Tokenizer not found for {model}, using cl100k_base fallback")
-            self.tokenizer = tiktoken.get_encoding("cl100k_base")
+        # Initialize tokenizer using offline tokenizers first
+        print(f"🚀 Initializing tokenizer for {model}...")
+        self.tokenizer = OfflineTokenizerLoader.load_tokenizer(model)
     
     def load_prompts(self, filename: str) -> dict:
         """Load prompts from JSON file."""

@@ -1,0 +1,8 @@
+{
+  "model_name": "gpt-4o",
+  "encoding_name": "cl100k_base",
+  "max_token_value": 100276,
+  "vocab_size": 100277,
+  "special_tokens_count": 5,
+  "tiktoken_version": "0.8.0"
+}
