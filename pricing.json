@@ -1,0 +1,97 @@
+{
+  "openai": {
+    "gpt-4.1": {
+      "input_usd_per_1m": 2.00,
+      "output_usd_per_1m": 8.00,
+      "cached_input_usd_per_1m": 0.50,
+      "batch_input_usd_per_1m": 1.00,
+      "batch_output_usd_per_1m": 4.00
+    },
+    "gpt-4.1 mini": {
+      "input_usd_per_1m": 0.40,
+      "output_usd_per_1m": 1.60,
+      "cached_input_usd_per_1m": 0.10,
+      "batch_input_usd_per_1m": 0.20,
+      "batch_output_usd_per_1m": 0.80
+    },
+    "gpt-4.1 nano": {
+      "input_usd_per_1m": 0.10,
+      "output_usd_per_1m": 0.40,
+      "cached_input_usd_per_1m": 0.025,
+      "batch_input_usd_per_1m": 0.05,
+      "batch_output_usd_per_1m": 0.20
+    },
+    "gpt-4o": {
+      "input_usd_per_1m": 5.00,
+      "output_usd_per_1m": 20.00,
+      "cached_input_usd_per_1m": 2.50,
+      "batch_input_usd_per_1m": 2.50,
+      "batch_output_usd_per_1m": 10.00
+    },
+    "gpt-4o-mini": {
+      "input_usd_per_1m": 0.60,
+      "output_usd_per_1m": 2.40,
+      "cached_input_usd_per_1m": 0.30,
+      "batch_input_usd_per_1m": 0.30,
+      "batch_output_usd_per_1m": 1.20
+    },
+    "o3": {
+      "input_usd_per_1m": 10.00,
+      "output_usd_per_1m": 40.00,
+      "cached_input_usd_per_1m": 2.50,
+      "batch_input_usd_per_1m": 5.00,
+      "batch_output_usd_per_1m": 20.00
+    },
+    "o4-mini": {
+      "input_usd_per_1m": 1.10,
+      "output_usd_per_1m": 4.40,
+      "cached_input_usd_per_1m": 0.275,
+      "batch_input_usd_per_1m": 0.55,
+      "batch_output_usd_per_1m": 2.20
+    }
+  },
+  "gemini": {
+    "gemini-2.5-pro": {
+      "input_usd_per_1m": { "<=200k": 1.25, ">200k": 2.50 },
+      "output_usd_per_1m": { "<=200k": 10.00, ">200k": 15.00 },
+      "context_caching_usd_per_1m": null,
+      "batch_discount": null
+    },
+    "gemini-2.5-flash": {
+      "input_usd_per_1m": { "any": 0.15 },
+      "output_usd_per_1m": { "no_thinking": 0.60, "thinking": 3.50 },
+      "context_caching_usd_per_1m": 0.0375,
+      "batch_discount": null
+    },
+    "gemini-2.0-flash": {
+      "input_usd_per_1m": 0.10,
+      "output_usd_per_1m": 0.40,
+      "context_caching_usd_per_1m": 0.025,
+      "batch_discount": null
+    },
+    "gemini-2.0-flash-lite": {
+      "input_usd_per_1m": 0.075,
+      "output_usd_per_1m": 0.30,
+      "context_caching_usd_per_1m": null,
+      "batch_discount": null
+    },
+    "gemini-1.5-pro": {
+      "input_usd_per_1m": { "<=128k": 1.25, ">128k": 2.50 },
+      "output_usd_per_1m": { "<=128k": 5.00, ">128k": 10.00 },
+      "context_caching_usd_per_1m": { "<=128k": 0.3125, ">128k": 0.625 },
+      "batch_discount": null
+    },
+    "gemini-1.5-flash": {
+      "input_usd_per_1m": { "<=128k": 0.075, ">128k": 0.15 },
+      "output_usd_per_1m": { "<=128k": 0.30, ">128k": 0.60 },
+      "context_caching_usd_per_1m": { "<=128k": 0.01875, ">128k": 0.0375 },
+      "batch_discount": null
+    },
+    "gemini-1.5-flash-8b": {
+      "input_usd_per_1m": { "<=128k": 0.0375, ">128k": 0.075 },
+      "output_usd_per_1m": { "<=128k": 0.15, ">128k": 0.30 },
+      "context_caching_usd_per_1m": { "<=128k": 0.01, ">128k": 0.02 },
+      "batch_discount": null
+    }
+  }
+} 

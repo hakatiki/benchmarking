@@ -1,0 +1,4 @@
+Filename,Model,Type,Timestamp,Num_Calls,Total_Prompt_Tokens,Total_Completion_Tokens,Total_Tokens,Avg_Response_Time_s,Avg_TPS,Avg_Cost_per_Call_USD,Total_Cost_USD,Cached_Tokens,Cache_Hit_Rate_%,Duration_s,Start_Time
+api_benchmark_gpt_4_1_20250602_114824.json,gpt_4_1,API,20250602_114824,65,5773,30508,36281,8.861,58.05,0.003862,0.251002,3072,53.21,607.530701,2025-06-02T11:48:24.158221
+api_benchmark_gpt_4o_20250602_113610.json,gpt_4o,API,20250602_113610,65,5773,32263,38036,9.471,55.38,0.010312,0.670285,1536,26.61,647.214672,2025-06-02T11:36:10.380381
+api_benchmark_gpt_4o_mini_20250602_111905.json,gpt_4o_mini,API,20250602_111905,65,5773,36426,42199,9.858,60.35,0.011593,0.753545,1536,26.61,672.366111,2025-06-02T11:19:05.935239
